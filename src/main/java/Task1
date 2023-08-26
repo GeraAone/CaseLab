@@ -1,0 +1,17 @@
+//CREATE TABLE IF NOT EXISTS 'employees' (
+'id' NUMBER(10) NOT NULL,
+'surname' varchar(10) NOT NULL,
+ 'experience' NUMBER(10) NOT NULL,
+PRIMARY KEY ('id')
+);
+INSERT INTO 'employees' ('id', 'surname', 'experience') VALUES
+(1, 'Ivanov', 10),
+(2, 'Petrov', 12),
+(3, 'Sidorov', 14),
+(4, 'Valentov', 14);//      created for tests
+
+SELECT DISTINCT  surname
+From employees
+WHERE experience <
+	(SELECT max(experience) FROM employees)
+ORDER by experience DESC LIMIT 1;
